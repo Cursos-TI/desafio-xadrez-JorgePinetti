@@ -3,7 +3,7 @@ int main()
 {
     // Variaveis de sistema
     int menuList, pecasList, loopControl1 = 1, loopControl2 = 1;
-    char pecasCadastradas[][10] = {"Bispo", "Torre", "Rainha"};
+    char pecasCadastradas[][10] = {"Bispo", "Torre", "Rainha", "Cavalo"};
     int pecasLenght = sizeof(pecasCadastradas) / sizeof(pecasCadastradas[0]);
 
     // Menu de peças
@@ -26,13 +26,14 @@ int main()
                 {
                     printf("%d - %s\n", i + 1, &pecasCadastradas[i]);
                 }
-                printf("4 - Voltar\n");
+                printf("5 - Voltar\n");
                 // Faz o seletor de pecas
                 printf(">");
                 scanf("%d", &pecasList);
                 // Exibe as pecas
                 switch (pecasList)
                 {
+                    // Movimentacao do bispo
                 case 1:
                     printf(pecasCadastradas[1 - 1], "\n");
                     printf("\nO Bispo se move nas diagonais\n");
@@ -43,6 +44,7 @@ int main()
                     }
                     loopControl2 = 1;
                     break;
+                // Movimentacao da torre
                 case 2:
                     printf(pecasCadastradas[2 - 1], "\n");
                     printf("\nA torre se move nas horizontais e verticais\n");
@@ -53,6 +55,7 @@ int main()
                     }
                     loopControl2 = 1;
                     break;
+                // Movimentacao da rainha
                 case 3:
                     printf(pecasCadastradas[3 - 1], "\n");
                     printf("\nA rainha se move nas horizontais, verticais e diagonais\n");
@@ -63,10 +66,29 @@ int main()
                     }
                     loopControl2 = 1;
                     break;
-
+                // Movimentacao do cavalo
                 case 4:
+                    printf(pecasCadastradas[4 - 1], "\n");
+                    printf("\nO cavalo se move em posicao de L\n");
+                    printf("Cavalo: 2 casas na vertical pra baixo e uma horizontal a esquerda\n");
+                    int cavaloControl = 1;
+                    do
+                    {
+                        for (int i = 1; i < 3; i++)
+                        {
+                            printf("Vertical pra baixo %d\n", i);
+                        }
+                        printf("Horizontal esquerda\n");
+                        cavaloControl = 0;
+                    } while (cavaloControl == 1);
+
+                    loopControl2 = 1;
+                    break;
+                // Volta ao menu
+                case 5:
                     loopControl2 = 0;
                     break;
+                // Controle de valor invalido
                 default:
                     printf("\nValor invalido\n");
                     loopControl2 = 0;
